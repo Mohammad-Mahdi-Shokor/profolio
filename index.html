@@ -43,7 +43,22 @@
   ">
     Loading...
   </div>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const target = params.get("url");
 
+  if (target) {
+    try {
+      const parsed = new URL(target);
+
+      if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+        window.location.replace(parsed.href);
+      }
+    } catch (e) {
+      console.log("Invalid URL");
+    }
+  }
+</script>
   <script src="flutter_bootstrap.js" async></script>
 
   <script>
@@ -56,4 +71,5 @@
 
 
 </html>
+
 
